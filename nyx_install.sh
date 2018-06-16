@@ -8,7 +8,7 @@ NYX_REPO="https://github.com/nyxpay/nyx/releases/download/v2.0.0.0/nyx-2.0.0-lin
 SENTINEL_REPO="https://github.com/nyxpay/sentinel.git"
 DEFAULTNYXPORT=4330
 DEFAULTNYXUSER="nyx"
-NODEIP=$(curl -s4 icanhazip.com)
+NODEIP=$(curl -s4 api.ipify.org)
 
 
 RED='\033[0;31m'
@@ -20,7 +20,7 @@ function get_ip() {
   declare -a NODE_IPS
   for ips in $(netstat -i | awk '!/Kernel|Iface|lo/ {print $1," "}')
   do
-    NODE_IPS+=($(curl --interface $ips --connect-timeout 2 -s4 icanhazip.com))
+    NODE_IPS+=($(curl --interface $ips --connect-timeout 2 -s4 api.ipify.org))
   done
 
   if [ ${#NODE_IPS[@]} -gt 1 ]
